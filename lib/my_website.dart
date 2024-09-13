@@ -1,3 +1,5 @@
+// mywebsite file name
+
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:whatsapp_unilink/whatsapp_unilink.dart';
@@ -16,15 +18,6 @@ class _MyWebsiteState extends State<MyWebsite> {
   double _progress = 0;
   late InAppWebViewController _webViewController;
   final CookieManager _cookieManager = CookieManager();
-  bool _isLoading = false;
-
-  /*
-  void _showLoadingIndicator(bool show) {
-    setState(() {
-      _isLoading = show;
-    });
-  } 
-  */
 
   @override
   Widget build(BuildContext context) {
@@ -95,46 +88,23 @@ class _MyWebsiteState extends State<MyWebsite> {
                       await _launchWhatsApp();
                       return NavigationActionPolicy.CANCEL;
                     }
-
                     return NavigationActionPolicy.ALLOW;
                   },
                   onLoadStop: (controller, url) async {
                     await _injectJavaScript(controller);
                   },
+                  /*
                   initialOptions: InAppWebViewGroupOptions(
                     crossPlatform: InAppWebViewOptions(
                       javaScriptEnabled: true,
+                      javaScriptCanOpenWindowsAutomatically: true,
                       mediaPlaybackRequiresUserGesture: false,
-                      allowFileAccessFromFileURLs: true,
-                      allowUniversalAccessFromFileURLs: true,
-                      clearCache: false,
-                      useShouldInterceptAjaxRequest: true,
                     ),
-                  ),
-                  onAjaxReadyStateChange: (controller, ajaxRequest) async {
-                    if (ajaxRequest.url.toString().contains("login") &&
-                        ajaxRequest.readyState == AjaxRequestReadyState.DONE) {
-                      await controller.loadUrl(
-                          urlRequest: URLRequest(
-                              url: WebUri(
-                                  "https://itrefaicloud.onrender.com/")));
-                    }
-                    return AjaxRequestAction.PROCEED;
-                  },
-                  onLoadResource: (controller, resource) {
-                    print("Resource loaded: ${resource.url}");
-                  },
+                  ),*/
                 ),
                 _progress < 1.0
                     ? LinearProgressIndicator(value: _progress)
                     : const SizedBox.shrink(),
-                if (_isLoading)
-                  Container(
-                    color: Colors.black.withOpacity(0.5),
-                    child: Center(
-                      child: CircularProgressIndicator(),
-                    ),
-                  ),
               ],
             ),
           ),
@@ -152,7 +122,7 @@ class _MyWebsiteState extends State<MyWebsite> {
     try {
       await launch('$link');
     } catch (e) {
-      //print('Error launching WhatsApp: $e');
+      print('Error launching WhatsApp: $e');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text("Couldn't open WhatsApp: $e")),
       );
@@ -164,39 +134,6 @@ class _MyWebsiteState extends State<MyWebsite> {
       handlerName: 'handleWhatsAppLink',
       callback: (args) async {
         await _launchWhatsApp();
-      },
-    );
-
-    controller.addJavaScriptHandler(
-      handlerName: 'handleFormSubmit',
-      callback: (args) async {
-        print('Form submitted: ${args[0]}');
-        _showLoadingIndicator(true);
-        // Process form data here
-        await Future.delayed(
-            Duration(seconds: 2)); // Simulating processing time
-        _showLoadingIndicator(false);
-        return {'status': 'success'};
-      },
-    );
-
-    controller.addJavaScriptHandler(
-      handlerName: 'handleFileUpload',
-      callback: (args) async {
-        String fieldName = args[0];
-        String base64Data = args[1];
-        print('File uploaded for field: $fieldName');
-        // Process the file data here
-        return {'status': 'success'};
-      },
-    );
-
-    controller.addJavaScriptHandler(
-      handlerName: 'onLoginSuccess',
-      callback: (args) async {
-        await controller.loadUrl(
-            urlRequest:
-                URLRequest(url: WebUri("https://itrefaicloud.onrender.com/")));
       },
     );
   }
@@ -214,44 +151,6 @@ class _MyWebsiteState extends State<MyWebsite> {
       } else {
         console.log('WhatsApp link not found');
       }
-
-      // Handle file inputs
-      const fileInputs = document.querySelectorAll('input[type="file"]');
-      fileInputs.forEach(input => {
-        input.addEventListener('change', (e) => {
-          const file = e.target.files[0];
-          const reader = new FileReader();
-          reader.onload = function(e) {
-            const base64 = e.target.result;
-            window.flutter_inappwebview.callHandler('handleFileUpload', input.name, base64);
-          };
-          reader.readAsDataURL(file);
-        });
-      });
-
-      // Handle form submissions
-      const forms = document.querySelectorAll('form');
-      forms.forEach(form => {
-        form.addEventListener('submit', (e) => {
-          e.preventDefault();
-          const formData = new FormData(form);
-          const data = Object.fromEntries(formData);
-          window.flutter_inappwebview.callHandler('handleFormSubmit', data).then(result => {
-            if (result.status === 'success') {
-              console.log('Form submitted successfully');
-              if (form.id === 'login-form') {
-                window.flutter_inappwebview.callHandler('onLoginSuccess');
-              }
-            }
-          });
-        });
-      });
     """);
-  }
-
-  void _showLoadingIndicator(bool show) {
-    setState(() {
-      _isLoading = show;
-    });
   }
 }
