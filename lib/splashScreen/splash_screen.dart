@@ -1,7 +1,7 @@
 import 'dart:async';
 
 //import 'package:account/authentication/auth_screen.dart';
-import 'package:hello_webview/global/global.dart';
+//import 'package:hello_webview/global/global.dart';
 //import 'package:account/mainScreens/home_screen.dart';
 import 'package:flutter/material.dart';
 

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 //import 'package:flutter_inappwebview/flutter_inappwebview.dart';
-import 'package:hello_webview/my_website.dart';
+//import 'package:hello_webview/my_website.dart';
 import 'splashScreen/splash_screen.dart';
 
 Future main() async {
@@ -15,11 +15,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "flutter demo",
+      title: "OrgCloudai",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(),
+      home: MySplashScreen(),
     );
   }
 }

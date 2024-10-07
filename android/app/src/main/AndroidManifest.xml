@@ -4,9 +4,9 @@
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <application
-        android:label="hellowebview"
+        android:label="orgcloudai"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/logo_icon">
         <activity
             android:name=".MainActivity"
             android:exported="true"

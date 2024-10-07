@@ -42,8 +42,7 @@ class _MyWebsiteState extends State<MyWebsite> {
                   onPressed: () async {
                     await _webViewController.clearCache();
                     await _cookieManager.deleteCookies(
-                        url: WebUri.uri(
-                            Uri.parse("https://itrefaicloud.onrender.com")));
+                        url: WebUri.uri(Uri.parse("https://cloudaiorg.com")));
                     Navigator.pop(context);
                     SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                   },
@@ -66,8 +65,7 @@ class _MyWebsiteState extends State<MyWebsite> {
               children: [
                 InAppWebView(
                   initialUrlRequest: URLRequest(
-                    url: WebUri.uri(
-                        Uri.parse("https://itrefaicloud.onrender.com")),
+                    url: WebUri.uri(Uri.parse("https://cloudaiorg.com")),
                   ),
                   onWebViewCreated: (InAppWebViewController controller) {
                     _webViewController = controller;
