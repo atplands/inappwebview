@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import '../widgets/slide_item.dart';
 import '../model/slide.dart';
 import '../widgets/slide_dots.dart';
-import 'package:hello_webview/my_website.dart';
+import 'package:cloudaiorg/my_website.dart';
 
 class MySplashScreen extends StatefulWidget {
   @override
