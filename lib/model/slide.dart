@@ -15,15 +15,26 @@ final slideList = [
       imageUrl: 'https://cloudaiorg.com/static/assets2/images/1.jpg',
       title: 'A Cool Way to Referrence',
       description:
-          'Elevate your IT career: Job support, referrals, mock interviews, and certifications – all in one app. An It Professional referrence among IT gaints to support each and grow an organisation.'),
+          'Elevate your IT career with Referrals: Connect top talent with ideal tech roles and earn rewards.'),
   Slide(
-      imageUrl: 'https://cloudaiorg.com/static/assets2/images/2.jpg',
+      imageUrl: 'https://cloudaiorg.com/static/assets2/images/2.jpeg',
       title: 'Certfications Dashboard ',
       description:
-          '"Master global IT certifications: From Azure to AWS, GCP to Oracle – elevate your expertise and career potential.'),
+          '"Master global IT Cert: From Azure to AWS, GCP to Oracle – elevate your expertise and career potential.'),
   Slide(
-      imageUrl: 'https://cloudaiorg.com/static/assets2/images/3.jpg',
+      imageUrl: 'https://cloudaiorg.com/static/assets2/images/3.jpeg',
+      title: 'Mock Interviews Program',
+      description:
+          'Comprehensive IT IQ with MockIQ: Ace your interviews with realistic mock sessions led by industry experts.'),
+  Slide(
+      imageUrl: 'https://cloudaiorg.com/static/assets2/images/4.jpeg',
+      title: 'Job Support Program ',
+      description:
+          '"Master Skills with JobSP: Boost your career with job support for all entry level freebies to experienced levels resources.'),
+  Slide(
+      imageUrl: 'https://cloudaiorg.com/static/assets2/images/5.jpeg',
       title: 'Addons Video Dashboard',
       description:
-          'Comprehensive IT career support: From resume building to startup planning – your one-stop app for professional growth.'),
+          'Comprehensive IT career support: From resume building to Career Guidance planning – your one-stop app for professional growth.'),
+          
 ];
