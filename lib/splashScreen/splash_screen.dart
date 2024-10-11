@@ -23,7 +23,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
   void initState() {
     super.initState();
     Timer.periodic(const Duration(seconds: 5), (Timer timer) {
-      if (_currentPage < 2) {
+      if (_currentPage < 4) {
         _currentPage++;
       } else {
         _currentPage = 0;
