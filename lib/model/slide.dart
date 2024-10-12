@@ -36,5 +36,4 @@ final slideList = [
       title: 'Addons Video Dashboard',
       description:
           'Comprehensive IT career support: From resume building to Career Guidance planning – your one-stop app for professional growth.'),
-          
 ];
